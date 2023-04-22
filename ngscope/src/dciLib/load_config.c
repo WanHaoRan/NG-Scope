@@ -47,7 +47,7 @@ int ngscope_read_config(ngscope_config_t* config){
     if(! config_lookup_int(cfg, "rnti", &config->rnti)){
         printf("ERROR: reading rnti\n");
     }
-    printf("read nof rf_dev:%d\n", config->rnti);
+    printf("read rnti:%d\n", config->rnti);
      
     if(! config_lookup_bool(cfg, "remote_enable", &config->remote_enable)){
         printf("ERROR: reading remote_enable\n");
@@ -72,7 +72,7 @@ int ngscope_read_config(ngscope_config_t* config){
         char name[50];
         sprintf(name, "rf_config%d.rf_freq",i);
         if(! config_lookup_int64(cfg, name, &config->rf_config[i].rf_freq)){
-            printf("ERROR: reading nof_rf_dev\n");
+            printf("ERROR: reading rf_freq\n");
         }else{
             printf("rf_freq:%lld ",config->rf_config[i].rf_freq);
         }

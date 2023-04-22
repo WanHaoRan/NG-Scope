@@ -59,6 +59,11 @@ configure_file(
   ${CMAKE_BINARY_DIR}/SRSRANbuildinfo.cmake
 )
 
+configure_file(
+  ${PROJECT_SOURCE_DIR}/ngscope/src/config_hr.cfg
+  ${CMAKE_CURRENT_BINARY_DIR}/ngscope/src/config.cfg
+)
+
 ########################################################################
 # Options
 ########################################################################
@@ -697,3 +702,4 @@ else(ENABLE_SRSEPC)
 endif(ENABLE_SRSEPC)
 
 add_subdirectory(test)
+

@@ -19,7 +19,6 @@ typedef struct{
     int     log_dl; 
 }dci_log_config_t;
 
-
 typedef struct{
     int                 nof_rf_dev;
     int                 rnti;
