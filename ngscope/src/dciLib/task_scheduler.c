@@ -230,6 +230,7 @@ int task_scheduler_init(ngscope_task_scheduler_t* task_scheduler,
     task_scheduler->prog_args = prog_args;
  
     // First of all, start the radio and get the cell information
+
     radio_init_and_start(&task_scheduler->rf, &task_scheduler->cell, prog_args, 
                                                 &cell_detect_config, &search_cell_cfo);
            
@@ -528,7 +529,7 @@ void* task_scheduler_thread(void* p){
         	//t1_sf_idx = timestamp_us();        
             sf_idx = srsran_ue_sync_get_sfidx(&task_scheduler.ue_sync);
         	//t2_sf_idx = timestamp_us();        
-            //printf("Get %d-th subframe TTI:%d \n", sf_idx, sf_idx+ sfn*10);
+            // printf("Get %d-th subframe TTI:%d \n", sf_idx, sf_idx+ sfn*10);
 			//printf("task -> finish get index!\n");
             sf_cnt ++; 
 			//fprintf(fd_1, "%d\t%d\t%d\t", sf_idx + sfn*10, sf_idx, sfn);
@@ -539,7 +540,7 @@ void* task_scheduler_thread(void* p){
                 ue_mib_decode_sfn(&ue_mib, &task_scheduler.cell, &sfn_tmp, decode_pdcch);
 
                 if(sfn != sfn_tmp){
-                    printf("current sfn:%d decoded sfn:%d\n",sfn, sfn_tmp);
+                    printf("current sfn:%d decoded sfn:%d, decode_pdcch:%d\n",sfn, sfn_tmp, decode_pdcch);
                 }
                 if(sfn_tmp > 0){
                     //printf("decoded sfn from:%d\n",sfn_tmp);

@@ -18,7 +18,7 @@ int task_sf_ring_buffer_init(task_tmp_buffer_t* q, int max_num_samples){
     q->header  	= 0;
     q->tail     = 0;
     q->len 		= 0;
-	q->full 	= false;
+		q->full 	= false;
     //task_tmp_buffer.nof_buf  = 0;
     // init the buffer
     for(int i=0; i<MAX_TMP_BUFFER; i++){
