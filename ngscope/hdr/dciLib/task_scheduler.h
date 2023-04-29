@@ -26,16 +26,16 @@ extern "C" {
 typedef struct{
 	bool 			empty_sf;
     uint32_t        sf_idx; // subframe index 0-9
-    uint32_t        sfn;    // system frame index 0-1020
+    uint32_t        sfn;    // system frame index 0-1023
     cf_t*           IQ_buffer[SRSRAN_MAX_PORTS]; //IQ buffer that stores the IQ sample
     pthread_mutex_t         sf_mutex;
     pthread_cond_t          sf_cond;
 }ngscope_sf_buffer_t;
 
 typedef struct{
-    srsran_rf_t         rf;
-    srsran_cell_t       cell;
-    srsran_ue_sync_t    ue_sync;
+    srsran_rf_t         rf;     // the usrp stream
+    srsran_cell_t       cell;   // cell related parameters
+    srsran_ue_sync_t    ue_sync;// ue_sync, cfo, cp etc/
     prog_args_t         prog_args;
 }ngscope_task_scheduler_t;
 

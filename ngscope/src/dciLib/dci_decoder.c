@@ -264,7 +264,7 @@ int dci_decoder_decode(ngscope_dci_decoder_t*       dci_decoder,
         if (srsran_sfidx_tdd_type(dci_decoder->dl_sf.tdd_config, sf_idx) == SRSRAN_TDD_SF_U) {
             decode_pdsch = false;
         }
-    } else {
+		}else {
         /* We are looking for SIB1 Blocks, search only in appropiate places */
         if ((sf_idx == 5 && (sfn % 2) == 0)) {
             decode_pdsch = true;
@@ -299,16 +299,16 @@ int dci_decoder_decode(ngscope_dci_decoder_t*       dci_decoder,
 
     // Now decode the PDSCH
     if(decode_pdsch){
-        uint32_t tm = 3;
-        dci_decoder->dl_sf.tti                             = tti;
-        dci_decoder->dl_sf.sf_type                         = SRSRAN_SF_NORM; //Ingore the MBSFN
-        dci_decoder->ue_dl_cfg.cfg.tm                      = (srsran_tm_t)tm;
-        dci_decoder->ue_dl_cfg.cfg.pdsch.use_tbs_index_alt = true;
+			uint32_t tm = 3;
+			dci_decoder->dl_sf.tti                             = tti;
+			dci_decoder->dl_sf.sf_type                         = SRSRAN_SF_NORM; //Ingore the MBSFN
+			dci_decoder->ue_dl_cfg.cfg.tm                      = (srsran_tm_t)tm;
+			dci_decoder->ue_dl_cfg.cfg.pdsch.use_tbs_index_alt = true;
 		if(decode_single_ue){
 			n = srsran_ngscope_decode_dci_signleUE_yx(&dci_decoder->ue_dl, &dci_decoder->dl_sf, \
 								&dci_decoder->ue_dl_cfg, &dci_decoder->pdsch_cfg, dci_per_sub, targetRNTI);
 		}else{
-    		ngscope_tree_t tree;	
+			ngscope_tree_t tree;	
 			n = srsran_ngscope_search_all_space_array_yx(&dci_decoder->ue_dl, &dci_decoder->dl_sf, \
 								&dci_decoder->ue_dl_cfg, &dci_decoder->pdsch_cfg, dci_per_sub, &tree, targetRNTI);
            	pthread_mutex_lock(&ue_tracker_mutex[rf_idx]);
@@ -325,7 +325,7 @@ int dci_decoder_decode(ngscope_dci_decoder_t*       dci_decoder,
 			// print the tracker info
 			//ngscope_ue_tracker_info(&ue_tracker[rf_idx], tti);
 
-           	pthread_mutex_unlock(&ue_tracker_mutex[rf_idx]);
+			pthread_mutex_unlock(&ue_tracker_mutex[rf_idx]);
 
 			/*********************   Print decoding result  **********************/
 
@@ -573,7 +573,7 @@ void* dci_decoder_thread(void* p){
 	// free the ue dl and the related buffer
     //srsran_ue_dl_free(&dci_decoder->ue_dl);
 	
-    printf("Going to Close %d-th DCI decoder!\n",decoder_idx);
+	printf("Going to Close %d-th DCI decoder!\n",decoder_idx);
 	if(enable_plot){
 		if(decoder_idx == 0){
 			pthread_cond_signal(&dci_plot_cond[rf_idx]);
@@ -584,8 +584,8 @@ void* dci_decoder_thread(void* p){
 	fclose(fd);
 	dci_decoder_up[rf_idx][decoder_idx] = false;
 
-    printf("%d-th RF-DEV %d-th DCI decoder CLOSED!\n",rf_idx, decoder_idx);
+	printf("%d-th RF-DEV %d-th DCI decoder CLOSED!\n",rf_idx, decoder_idx);
 
-    return NULL;
+	return NULL;
 }
 

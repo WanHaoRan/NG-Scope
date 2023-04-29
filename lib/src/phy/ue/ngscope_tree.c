@@ -472,6 +472,7 @@ int ngscope_tree_set_cce(ngscope_tree_t* q, int nof_cce){
 	q->nof_cce = nof_cce;
 	return 1;
 }
+
 int srsran_ngscope_tree_find_rnti_range(ngscope_tree_t* q,
 										int 	 loc_idx,
 										uint16_t rnti_min,
@@ -485,7 +486,6 @@ int srsran_ngscope_tree_find_rnti_range(ngscope_tree_t* q,
 	}
     return -1;
 }
-
 
 ngscope_dci_msg_t srsran_ngscope_tree_find_rnti(ngscope_tree_t* q,
 											uint16_t rnti)

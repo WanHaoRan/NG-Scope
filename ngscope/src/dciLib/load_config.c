@@ -104,7 +104,7 @@ int ngscope_read_config(ngscope_config_t* config){
         printf("\n");
 
         sprintf(name, "rf_config%d.disable_plot",i);
-        if(! config_lookup_bool(cfg, name, &config->rf_config[i].disable_plot)){
+        if(! config_lookup_int(cfg, name, &config->rf_config[i].disable_plot)){
             printf("ERROR: reading disable_plot\n");
         }else{
             printf("disable plot: %d\n", config->rf_config[i].disable_plot);

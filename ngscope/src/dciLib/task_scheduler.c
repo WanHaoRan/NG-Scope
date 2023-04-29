@@ -445,11 +445,11 @@ void* task_scheduler_thread(void* p){
     printf("nof_prb:%d max_sample:%d\n", task_scheduler.cell.nof_prb, max_num_samples);
 
     /************** Setting up the UE sync buffer ******************/
-    cf_t* sync_buffer[SRSRAN_MAX_PORTS] = {NULL};
+    cf_t* sync_buffer[SRSRAN_MAX_PORTS] = {NULL}; // the IQ samples X SRSRAN_MAX_PORTS
     cf_t* buffers[SRSRAN_MAX_CHANNELS] = {};
 
     for (int j = 0; j < task_scheduler.prog_args.rf_nof_rx_ant; j++) {
-        sync_buffer[j] = srsran_vec_cf_malloc(max_num_samples);
+        sync_buffer[j] = srsran_vec_cf_malloc(max_num_samples); // allocate the max_num_samples space for each sync_buffer
     }
     // Set the buffer for ue_sync
     for (int p = 0; p < SRSRAN_MAX_PORTS; p++) {

@@ -1,0 +1,6 @@
+{
+  "files.associations": {
+    "ngscope_tree.h": "c",
+    "sync.h": "c"
+  }
+}

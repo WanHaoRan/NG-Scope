@@ -129,7 +129,7 @@ static int ofdm_init_mbsfn_(srsran_ofdm_t* q, srsran_ofdm_cfg_t* cfg, srsran_dft
   srsran_vec_cf_zero(q->tmp, symbol_sz);
 #else
   uint32_t nof_prb = q->cfg.nof_prb;
-  cf_t* in_buffer = q->cfg.in_buffer;
+  cf_t* in_buffer = q->cfg.in_buffer; 
   cf_t* out_buffer = q->cfg.out_buffer;
   int cp1 = SRSRAN_CP_ISNORM(cp) ? SRSRAN_CP_LEN_NORM(0, symbol_sz) : SRSRAN_CP_LEN_EXT(symbol_sz);
   int cp2 = SRSRAN_CP_ISNORM(cp) ? SRSRAN_CP_LEN_NORM(1, symbol_sz) : SRSRAN_CP_LEN_EXT(symbol_sz);

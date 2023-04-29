@@ -60,7 +60,7 @@ configure_file(
 )
 
 configure_file(
-  ${PROJECT_SOURCE_DIR}/ngscope/src/config_hr.cfg
+  ${PROJECT_SOURCE_DIR}/ngscope/config/config_hr.cfg
   ${CMAKE_CURRENT_BINARY_DIR}/ngscope/src/config.cfg
 )
 
